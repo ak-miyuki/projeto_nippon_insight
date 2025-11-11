@@ -141,8 +141,6 @@
   function verificar() {
     senhaVar = senha_input.value;
     var tamanho_senhaVar = senhaVar.length;
-    var senhaVar_sem_especial = senhaVar.replaceAll(/[^a-zA-Z0-9]/g, ""); //troca todos os caracteres que não são números ou letras
-    var tamanho_senhaVar_sem_especial = senhaVar_sem_especial.length;
     var senhaVar_minuscula = senhaVar.toLowerCase();
     var senhaVar_maiuscula = senhaVar.toUpperCase();
     var crit1 = 0;
@@ -153,49 +151,71 @@
 
     div_checks_cadastro.style.display = 'flex';
 
-    if (senhaVar_minuscula != senhaVar) { // tem letras maiúsculas
+    // Tem letra maiúscula
+    check_upper.src = './assets/icon/icons-cancelar.png';
+    crit1 = 0;
+
+    if (senhaVar_minuscula != senhaVar) { 
       crit1 = 1;
       check_upper.src = './assets/icon/icons-ok.png';
-    } else {
-      check_upper.src = './assets/icon/icons-cancelar.png';
-      crit1 = 0;
-    }
+    } 
 
-    if (senhaVar_maiuscula != senhaVar) { // tem letras minúculas
+    // Tem letra minúscula
+    check_lower.src = './assets/icon/icons-cancelar.png';
+    crit2 = 0;
+
+    if (senhaVar_maiuscula != senhaVar) { 
       crit2 = 1;
       check_lower.src = './assets/icon/icons-ok.png';
-    } else {
-      check_lower.src = './assets/icon/icons-cancelar.png';
-      crit2 = 0;
-    }
+    } 
 
-    var listaNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // Tem número
+    var listaNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    var temNum = [];
 
-    for (let i = 0; i < listaNum.length; i++) {
-      if (senhaVar == listaNum[i]){
-        // if (senhaVar.includes('0') || senhaVar.includes('1') || senhaVar.includes('2') || senhaVar.includes('3') || senhaVar.includes('4') || senhaVar.includes('5') || senhaVar.includes('6') || senhaVar.includes('7') || senhaVar.includes('8') || senhaVar.includes('9')) {
+    check_num.src = './assets/icon/icons-cancelar.png';
+    crit3 = 0;
+
+    if (listaNum.length > 0) {
+      for (var i = 0; i < senhaVar.length; i++) {
+        if (listaNum.includes(senhaVar[i])) {
+          temNum.push(senhaVar[i]);
+        }
+
+        if (temNum.length > 0) {
           crit3 = 1;
           check_num.src = './assets/icon/icons-ok.png';
-        } else {
-          check_num.src = './assets/icon/icons-cancelar.png';
-          crit3 = 0;
-     }
+        }
+      }
     }
 
-    if (tamanho_senhaVar != tamanho_senhaVar_sem_especial) { // tem caracteres especiais
-      crit4 = 1;
-      check_especial.src = './assets/icon/icons-ok.png';
-    } else {
-      check_especial.src = './assets/icon/icons-cancelar.png';
-      crit4 = 0;
+    // Tem caractere especial
+    var listaEspecial = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', ';', ':', '?', '/', '`', '~', ',', '.', '[',']','|', '¨'];
+    var temEspecial = [];
+
+    check_especial.src = './assets/icon/icons-cancelar.png';
+    crit4 = 0;
+
+    if (listaEspecial.length > 0) {
+      for (var i = 0; i < senhaVar.length; i++) {
+        if (listaEspecial.includes(senhaVar[i])) {
+          temEspecial.push(senhaVar[i]);
+        }
+
+        if (temEspecial.length > 0) {
+          crit4 = 1;
+          check_especial.src = './assets/icon/icons-ok.png';
+        }
+      }
     }
 
-    if (tamanho_senhaVar >= 8) { // tem pelo menos 8 caracteres
+     // Tem pelo menos 8 caracteres
+     check_tamanho.src = './assets/icon/icons-cancelar.png';
+     crit5 = 0;
+
+    if (tamanho_senhaVar >= 8) {
       crit5 = 1;
       check_tamanho.src = './assets/icon/icons-ok.png';
-    } else {
-      check_tamanho.src = './assets/icon/icons-cancelar.png';
-      crit5 = 0;
     }
 
     criteriosAtendidos = crit1 + crit2 + crit3 + crit4 + crit5
@@ -236,7 +256,7 @@
         mensagem_erro.innerHTML = `O nome deve ter mais de 1 caractere`
         finalizarAguardar();
         return false;
-      } else if (!emailVar.includes('@') || !emailVar.includes('.com') || !emailVar.includes('.br')) {
+      } else if (!emailVar.includes('@') || (!emailVar.endsWith(".com") && !emailVar.endsWith(".br"))) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML = `O email deve conter @ e terminar em .com ou .br`
         finalizarAguardar();

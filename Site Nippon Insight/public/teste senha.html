@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt_senha" oninput="validar()">
+
+    <br><br>
+
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+
+    var listaNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    // var listaNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    // function validar() {
+    //     var senha = ipt_senha.value;
+
+    //     for (var i = 0; i < listaNum.length; i++) {
+    //         for (var j = 0; j < senha[j]; j++) {
+
+    //             if (listaNum[i] == senha[j]) {
+    //                 div_msg.innerHTML = `Tem num`
+    //             } else {
+    //                 div_msg.innerHTML = `Nao tem num`
+    //             }
+    //         }
+    //     }
+
+    // }
+
+    function validar() {
+        var senha = ipt_senha.value;
+        var msg = "";
+
+        var temNum = [];
+
+        msg = `não tem num`
+        if (listaNum.length > 0) {
+            
+            for (var i = 0; i < senha.length; i++) {
+                
+                if (listaNum.includes(senha[i])) {
+                    temNum.push(senha[i]);
+                } 
+    
+                if (temNum.length > 0) {
+                    msg = `tem num`
+                } 
+            }
+        } 
+        div_msg.innerHTML = msg;
+    }
+
+
+    // function validar() {
+    //     var senha = ipt_senha.value;
+    //     var msg = "";
+
+    //     var temNum = [];
+
+    //     for( var i = 0; i < senha.length; i++){
+
+    //         if(listaNum.includes() == senha[i]) {
+                
+    //             console.log("tem num")
+    //         }
+
+    //     }
+        
+    
+    // }
+</script>

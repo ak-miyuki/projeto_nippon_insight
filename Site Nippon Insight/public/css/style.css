@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(21, 20, 20);
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* .julius-sans-one-regular {
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+/* ---------------------------- HEADER ---------------------------- */
+.header {
+  height: 90px;
+  border-bottom: 1.7px solid #c4b28b;
+  background-color: #740c27;
+}
+
+.header .container {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+}
+
+.header a {
+  text-decoration: none;
+  color: #e3b062;
+}
+
+.agora {
+  font-weight: 600;
+}
+
+.navbar {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #d7a04f;
+  font-size: 20px;
+}
+
+.titulo {
+  color: #d7a04f;
+  width: fit-content;
+  font-weight: 550;
+  font-size: 45px;
+}
+
+.header h1 {
+  margin: 0;
+}
+/* -------------------------- HEADER END -------------------------- */
+
+
+/* ---------------------------- BANNER ---------------------------- */
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner_img {
+  height: 2500px;
+  width: 75%;
+  background-image: url('../assets/imgs/No_bg01_cut.png');
+  background-size:cover;
+}
+
+.banner_texto .container {
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.banner_texto .container p {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+}
+
+.banner_texto .container span {
+  font-weight: 800;
+}
+
+/* -------------------------- BANNER END -------------------------- */
+
+/* ---------------------------- FOOTER ---------------------------- */
+
+.footer {
+  background-color: #4b081a;
+  height: 150px;
+  color: #d7a04f;
+  display: flex;
+  font-size: 15px;
+  border-top: 1px solid #c4b28b;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
+
+/* -------------------------- FOOTER END -------------------------- */

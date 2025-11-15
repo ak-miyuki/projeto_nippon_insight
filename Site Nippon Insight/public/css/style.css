@@ -2,16 +2,16 @@
 
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: rgb(21, 20, 20);
-    font-family: "Julius Sans One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  background-color: rgb(34, 32, 32);
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* .julius-sans-one-regular {
@@ -22,15 +22,18 @@ body {
 
 .container {
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
 /* ---------------------------- HEADER ---------------------------- */
 .header {
-  height: 90px;
+  height: 12vh;
+  width: 100vw;
   border-bottom: 1.7px solid #c4b28b;
-  background-color: #740c27;
+  background-image: linear-gradient(to right, #4d0a1c, #740c27), url('../assets/imgs/Header.png');
+  position: fixed;
+  z-index: 999;
 }
 
 .header .container {
@@ -63,27 +66,53 @@ body {
   color: #d7a04f;
   width: fit-content;
   font-weight: 550;
-  font-size: 45px;
+  font-size: 2.7rem;
 }
 
 .header h1 {
   margin: 0;
 }
+
 /* -------------------------- HEADER END -------------------------- */
 
+/* ---------------------------- FOOTER ---------------------------- */
+
+.footer {
+  background-color: #4b081a;
+  height: 150px;
+  color: #d7a04f;
+  display: flex;
+  font-size: 15px;
+  border-top: 1px solid #c4b28b;
+  align-self: flex-end;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
+
+/* -------------------------- FOOTER END -------------------------- */
 
 /* ---------------------------- BANNER ---------------------------- */
 
 .main {
+  margin-top: 12vh;
   display: flex;
   flex-direction: column;
+  padding-top: 12vh;
 }
 
 .banner_img {
-  height: 2500px;
-  width: 75%;
-  background-image: url('../assets/imgs/No_bg01_cut.png');
-  background-size:cover;
+  height: 200px;
+  width: 100%;
+  background-image: url('../assets/imgs/banner_gold.jpg');
+  background-size: cover;
 }
 
 .banner_texto .container {
@@ -106,25 +135,184 @@ body {
 
 /* -------------------------- BANNER END -------------------------- */
 
-/* ---------------------------- FOOTER ---------------------------- */
 
-.footer {
-  background-color: #4b081a;
-  height: 150px;
-  color: #d7a04f;
+/* --------------------------- CADASTRO --------------------------- */
+
+
+.login {
+  height: fit-content;
+  min-height: 80vh;
+  width: 100%;
+  margin: 0;
+  padding-top: 12vh;
   display: flex;
-  font-size: 15px;
-  border-top: 1px solid #c4b28b;
-}
-
-.footer .container {
   justify-content: center;
-  text-align: center;
+  align-items: center;
+}
+
+.login .container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login .container .div_img_esquerda {
+  width: 50%;
+  height: 100%;
+  background-image: url('/public/assets/imgs/mt.Fuji_Sakura.webp');
+}
+
+.card {
+  width: 45%;
+  border-radius: 7px;
+  border: 2px solid #c4b28b;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #c4b28b;
   flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+  font-size: 1.5rem;
+  background-image: linear-gradient(hsla(0, 0%, 1%, 0.884)), url('../assets/imgs/9eff029bc9b25256f5a7fe9d6587220a.jpg');
+  background-size: 100% auto;
+  gap: 40px;
+
+
 }
 
-.footer .container .version {
-  font-size: 12px;
+.card-cadastro {
+  min-height: 70vh;
+  max-width: 35vw;
+  margin: 4vh 5vw;
+  padding: 7vh 4vw;
 }
 
-/* -------------------------- FOOTER END -------------------------- */
+
+.card-login {
+  gap: 10px;
+  max-height: 50vh;
+  max-width: 35vw;
+  margin: 4vh 5vw;
+  padding: 7vh 4vw;
+  
+}
+
+.formulario {
+  width: 85%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.formulario span {
+  font-size: 1.2rem;
+}
+
+.campo {
+  margin-top: 2vh;
+}
+
+/* Validação da senha */
+.checks_cadastro {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  gap: 4px;
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+
+.check_img {
+  height: 15px;
+  width: 15px;
+  margin-left: 5px;
+}
+
+.check_img img {
+  height: 100%;
+  width: 100%;
+}
+/* Validação da senha END */
+
+
+
+/* FORMULARIO */
+
+/* Div de Erros */
+#div_erros_login {
+  display: none
+}
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+/* Div de Erros END */
+
+/* Div de gif de loading */
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+/* Div de gif de loading END */
+
+/* ------------------------- CADASTRO END ------------------------- */
+
+.botao {
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #c4b28b;
+  border-radius: 5px;
+  border: 1.6px solid #c4b28b;
+  padding: 5px 20px;
+  height: fit-content;
+  min-width: 25px;
+  cursor: pointer;
+  background-image: linear-gradient(to top, rgb(116, 28, 50), rgb(187, 108, 133));
+  align-self: center;
+}
+
+input {
+  min-height: 4vh;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+input::placeholder {
+  text-align: center;
+}

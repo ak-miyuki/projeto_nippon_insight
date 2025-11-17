@@ -2,11 +2,324 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-body {
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Julius Sans One", sans-serif;
 }
+
+body {
+  width: 100%;
+  background-color: rgb(24, 23, 23);
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+/* ---------------------------- HEADER ---------------------------- */
+.header {
+  height: 12vh;
+  width: 100vw;
+  border-bottom: 1.7px solid #c4b28b;
+  background-image: linear-gradient(to right, #4d0a1c, #740c27), url('../assets/imgs/Header.png');
+  position: fixed;
+  z-index: 999;
+}
+
+.header .container {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 95%;
+}
+
+.header a {
+  text-decoration: none;
+  color: #e3b062;
+}
+
+.agora {
+  font-weight: 600;
+}
+
+.navbar {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #d7a04f;
+  font-size: 20px;
+}
+
+.titulo {
+  color: #d7a04f;
+  width: fit-content;
+  font-weight: 550;
+  font-size: 2.7rem;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.nome-sair {
+  width: 300px;
+  display: flex;
+}
+
+.hello {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+/* -------------------------- HEADER END -------------------------- */
+
+/* ------------------------- MENU LATERAL ------------------------- */
+body .janela {
+  display: flex;
+  width: 100%;
+}
+
+.header-left a {
+  text-decoration: none;
+  color: white;
+}
+
+.header-left {
+  position: fixed;
+  margin: 105px 30px 0 30px;
+
+  top: 0;
+  left: 0;
+  z-index: 997;
+  height: 80vh;
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #c4b28b;
+  background-color: #101010;
+}
+
+.menu_titulo {
+  width: 100%;
+  height: 7vh;
+  align-self: flex-start;
+  justify-content: center;
+  display: flex;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 2px solid #c4b28b;
+  background-image: linear-gradient(to bottom, rgb(116, 28, 50), #bb6c85);
+}
+
+.header-left .conteudo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menu_block {
+  width: 90%;
+  border-bottom: 1.5px solid #c4b28b;
+  display: flex;
+  flex-direction: column;
+  padding: 0 5px 7px 5px;
+}
+
+.menu_block_ultimo {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.header-left h3 {
+  background-image: linear-gradient(to top right, #dfd4be, #c6a765, #bd6088, #9f3254);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 1.3rem;
+}
+
+.header-left h1 {
+  color: #c4b28b;
+  font-weight: 100;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.8rem;
+}
+
+.header-left span {
+  color: #c4a158;
+  font-weight: 100;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.1rem;
+}
+
+/* ----------------------- MENU LATERAL END ----------------------- */
+
+/* --------------------------- DASHBOARD -------------------------- */
+/* pagina graficos */
+
+.dash-header {
+  background-color: #212124;
+}
+
+.dash {
+  width: 80%;
+  position: relative;
+  top: 0;
+  left: 22%;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 105px;
+}
+
+.dash .kpi_bar {
+  height: 13vh;
+  width: 93%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dash .kpi_bar .kpi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 23%;
+  height: 95%;
+  border-radius: 5px;
+  border: 2px solid #c4b28b;
+  background-color: #101010;
+  background-image: linear-gradient(to top right, #dfd4be, #c6a765, #bd6088, #9f3254);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  gap: 10px;
+
+  h3 {
+    font-size: 1.1rem;
+    padding-left: 10px;
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 900;
+    justify-self: center;
+    align-self: center;
+  }
+
+}
+
+.dash .graficos_todos {
+  height: 70%;
+  width: 93%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dash .graficos_todos .grafico_esquerda {
+  width: 55%;
+  border-radius: 5px;
+  border: 2px solid #c4b28b;
+  background-color: #101010;
+
+}
+
+.dash .graficos_todos .graficos_direita {
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dash .graficos_todos .graficos_direita .grafico_progresso {
+  height: 15vh;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #c4b28b;
+  background-color: #101010;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.grafico_progresso .titulo {
+  background-image: linear-gradient(to top right, #dfd4be, #c6a765, #bd6088, #9f3254);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 1.1rem;
+  font-weight: 900;
+  padding-left: 10px;
+}
+
+.grafico_progresso .barra_porcentagem {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.grafico_progresso .bg_bege {
+  height: 5vh;
+  width: 20vw;
+  background-color: #dfd4be;
+  justify-self: center;
+  align-self: center;
+  border-radius: 7px;
+  border: 2px solid #c4b28b;
+}
+
+.grafico_progresso .bg_dourado {
+  height: 100%;
+  width: 75%;
+  background-color: #bb6c85;
+  border-radius: 7px;
+}
+
+.grafico_progresso .porcentagem {
+  font-size: 1.5rem;
+  font-weight: 900;
+  justify-self: center;
+  align-self: center;
+  color: #bb6c85;
+  padding-left: 10px;
+}
+
+.dash .graficos_todos .graficos_direita .grafico_pizza {
+  height: 50vh;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #c4b28b;
+  background-color: #101010;
+}
+
+/* ------------------------- DASHBOARD END ------------------------ */
 
 .label-captura {
   display: flex;
@@ -109,21 +422,7 @@ body {
   margin-left: 30px;
 }
 
-/* pagina graficos */
 
-.dash-header {
-  background-color: #212124;
-}
-
-.dash {
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-color: #161618;
-  height: 100vh;
-  overflow: auto;
-}
 
 .area-parametros-alerta {
   /* border: 2px solid pink; */
@@ -327,30 +626,8 @@ canvas {
 
 /* PAGINA DOS GRÁFICOS 2023 */
 
-.janela {
-  display: flex;
-  /* width: 100vw; */
-}
 
-.header-left a {
-  text-decoration: none;
-  color: white;
-}
 
-.header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
-}
 
 .dash-right {
   display: flex;
@@ -364,15 +641,6 @@ canvas {
   overflow: auto;
 }
 
-.header-left h1 {
-  color: #32b9cd;
-}
-
-.hello {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 
 .hello h3 {
   color: #e3b062;
@@ -425,4 +693,52 @@ canvas {
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+
+.botao-preto {
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #c4b28b;
+  border-radius: 5px;
+  border: 1.6px solid #c4b28b;
+  padding: 5px 20px;
+  height: fit-content;
+  min-width: 25px;
+  cursor: pointer;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgb(65, 62, 63));
+  align-self: center;
+}
+
+.botao {
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #c4b28b;
+  border-radius: 5px;
+  border: 1.6px solid #c4b28b;
+  padding: 5px 20px;
+  height: fit-content;
+  min-width: 25px;
+  cursor: pointer;
+  background-image: linear-gradient(to top, rgb(116, 28, 50), rgb(187, 108, 133));
+  align-self: center;
+}
+
+input {
+  min-height: 4vh;
+  width: 70%;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  background-image: linear-gradient(to top, #decdac, #f5efe2);
+  border: 2px solid #bba77e;
+  border-radius: 5px;
+}
+
+input::placeholder {
+  text-align: center;
+  color: #721d34;
+  font-weight: 500;
 }

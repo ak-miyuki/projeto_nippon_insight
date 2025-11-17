@@ -6,19 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>『日本』Nippon Insight | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
-    <link rel="stylesheet" href="./../css/style.css" />
+    <!-- <link rel="stylesheet" href="./../css/estilo.css" /> -->
+    <!-- <link rel="stylesheet" href="./../css/style.css" /> -->
     <script src="../js/sessao.js"></script>
     <!-- <script src="./../js/alerta.js"></script> -->
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
 
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -31,44 +27,132 @@
 
 <body>
 
+    <!------------------------------- HEADER ------------------------------->
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">『日本』Nippon Insight</h1>
+            <ul class="navbar">
+                <li class="agora">
+                    <a href="#">DASHBOARD</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="./viagem.html">EDITAR VIAGEM</a>
+                </li>
+
+            </ul>
+            <div class="nome-sair">
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+                <div>
+                    <button class="botao-preto" onclick="limparSessao()">SAIR</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!----------------------------- HEADER END ----------------------------->
+
     <div class="janela">
         <div class="header-left">
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-           
-            <div class="hello">
-                <h3><span id="cpf_usuario">cpf</span></h3>
+            <div class="menu_titulo">
+                <h1>SUA VIAGEM</h1>
             </div>
 
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
+            <div class="conteudo">
+                <!-- COLOCAR OS CONTEÚDOS DO MENU -->
+                <!-- DATA DE IDA -->
+                <div class="menu_block">
+                    <h3>&#x1F338; Data de ida</h3>
+                    <span id="span_dt_ida"> --//-- </span>
+                </div>
 
-            <div class="btn-nav">
+                <!-- DATA DE VOLTA -->
+                <div class="menu_block">
+                    <h3>&#x1F338; Data de volta:</h3>
+                    <span id="span_dt_volta"> --//-- </span>
+                </div>
 
-                <h3>Gráficos</h3>
+                <!-- HORAS DE VÔO -->
+                <div class="menu_block">
+                    <h3>&#x1F338; Horas de vôo:</h3>
+                    <span id="span_horas_voo"> --//-- </span>
+                </div>
 
-            </div>
+                <!-- DIAS NO JAPÃO -->
+                <div class="menu_block">
+                    <h3>&#x1F338; Dias no Japão:</h3>
+                    <span id="span_dias_japao"> --//-- </span>
+                </div>
 
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
+                <!-- QUANTIDADE DE PESSOAS -->
+                <div class="menu_block">
+                    <h3>&#x1F338; Quantidade de pessoas:</h3>
+                    <span id="span_qtd_pessoas"> --//-- </span>
+                </div>
 
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
+                <!-- ATUALIZAR CAIXINHA -->
+                <div class="menu_block_ultimo">
+                    <h3>&#x1F338; Valor à Adicionar/Retirar:</h3>
+                    <input type="number" id="caixinha_input" placeholder="R$">
+                    <button class="botao">ATUALIZAR CAIXINHA</button>
+                </div>
+
             </div>
 
         </div>
 
         <div class="dash">
-            <div id="alerta">
+            <div class="kpi_bar">
+                <!-- estação -->
+                <div class="kpi">
+                    <h3>ESTAÇÃO ESCOLHIDA</h3>
+                    <span id="span_estacao">--//--</span>
+                </div>
+                
+                <!-- cotação -->
+                <div class="kpi">
+                    <h3>COTAÇÃO</h3>
+                    <span id="span_cotacao">--//--</span>
+                </div>
+                
+                <!-- valor total da viagem -->
+                <div class="kpi">
+                    <h3>VALOR DA VIAGEM</h3>
+                    <span id="span_valor_viagem">--//--</span>
+                </div>
+
+                <!-- valor guardado -->
+                <div class="kpi">
+                    <h3>VALOR GUARDADO</h3>
+                    <span id="span_valor_guardado">--//--</span>
+                </div>
+            </div>
+            <div class="graficos_todos">
+                <!-- gráfico de barras -->
+                <div class="grafico_esquerda">
+
+                </div>
+                <div class="graficos_direita">
+                    <div class="grafico_progresso">
+                        <div class="titulo">PERCENTUAL DO VALOR GUARDADO</div>
+                        <div class="barra_porcentagem">
+                            <div class="bg_bege">
+                                <div class="bg_dourado" id="barra_porcentagem">
+                                    
+                                </div>
+                            </div>
+                            <div class="porcentagem">
+                                <h3 id="porcentagem">75%</h3> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grafico_pizza" id="grafico_pizza">
+                        Gráfico de pizza
+                    </div>
+                </div>
+
             </div>
 
             <div class="btns-dash" id="btnAquario">
@@ -85,18 +169,28 @@
 </html>
 
 <script>
+    // PEGAR DADOS DO USUÁRIO:
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    span_cotacao.innerHTML = `BRL 1.00 = JPY 28.77`
+    // span_dt_ida.innerHTML = JSON.parse(sessionStorage.VIAGEM).find(item => item.idViagem ==idViagem).dtIda;
+    // span_dt_volta.innerHTML = sessionStorage.
+    // span_horas_voo.innerHTML = sessionStorage.
+    // span_dias_japao.innerHTML = sessionStorage.
+    // span_qtd_pessoas.innerHTML = sessionStorage.
+
+//     var dtIda = JSON.parse(sessionStorage.VIAGEM).find(item => item.id ==idViagem).dtIda;
+// span_dt_ida.innerHTML += 'data'
 
 
     let proximaAtualizacao;
 
-    window.onload = exibirAquariosDoUsuario();
+    window.onload = exibirViagemDoUsuario();
 
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
+    function exibirViagemDoUsuario() {
+        var viagem = JSON.parse(sessionStorage.VIAGEM);
+        viagem.forEach(item => {
+            document.getElementById("btnViagem").innerHTML += `
+            <button class="btn-chart" onclick="exibirViagem(${item.id})" id="btnViagem${item.id}">${item.descricao}</button>
             `
 
             document.getElementById("graficos").innerHTML += `

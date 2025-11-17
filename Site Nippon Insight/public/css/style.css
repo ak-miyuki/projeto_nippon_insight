@@ -152,20 +152,26 @@ body {
 
 .login .container {
   display: flex;
-  width: 100%;
+  width: 55%;
   justify-content: center;
   align-items: center;
+  
 
 }
 
-.login .container .div_img_esquerda {
-  width: 50%;
+.login .container .img_esquerda {
+  width: 44%;
   height: 100%;
-  background-image: url('/public/assets/imgs/mt.Fuji_Sakura.webp');
+  background-size: cover;
+}
+
+img {
+  height: 100%;
+  width: 75%;
 }
 
 .card {
-  width: 45%;
+  width: 100%;
   border-radius: 7px;
   border: 2px solid #c4b28b;
   display: flex;
@@ -186,6 +192,7 @@ body {
 .card-cadastro {
   min-height: 70vh;
   max-width: 35vw;
+  min-width: 20vw;
   margin: 4vh 5vw;
   padding: 7vh 4vw;
 }
@@ -195,6 +202,7 @@ body {
   gap: 10px;
   max-height: 50vh;
   max-width: 35vw;
+  min-width: 20vw;
   margin: 4vh 5vw;
   padding: 7vh 4vw;
   
@@ -249,7 +257,14 @@ body {
 
 /* Div de Erros */
 #div_erros_login {
-  display: none
+  display: none;
+  justify-self: center;
+  align-self: center;
+}
+
+.aviso_erro_login {
+  text-align: center;
+
 }
 
 .alerta_erro{
@@ -315,4 +330,6 @@ input {
 
 input::placeholder {
   text-align: center;
+  color: #721d34;
+  font-weight: 500;
 }

@@ -24,8 +24,7 @@
   <link rel="stylesheet" href="./css/style.css" />
 
 
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
-  <!-- -------------------------- CRIAR UM ícone pro Nippon Insight -->
+  <link rel="icon" href="./assets/icons/mt_fuji_img.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -124,12 +123,12 @@
         <button class="botao" onclick="cadastrar()">CADASTRAR</button>
       </div>
       <div id="div_aguardar" class="loading-div">
-        <img src="./assets/circle-loading.gif" id="loading-gif" /> <<<<<<<<<<<<<<<<<<<< GIT DE LOADING
-      </div>
+        <img src="./assets/circle-loading.gif" id="loading-gif" />
+        <<<<<<<<<<<<<<<<<<<< GIT DE LOADING </div>
 
-      <div id="div_erros_login"></div>
+          <div id="div_erros_login"></div>
+      </div>
     </div>
-  </div>
   </div>
 
   <!------------------------------ FOOTER -------------------------------->
@@ -331,6 +330,14 @@
       });
 
     return false;
+  }
+
+
+  function limparFormulario() {
+    nome_input.value = "";
+    email_input.value = "";
+    senha_input.value = "";
+    confirmacao_senha_input.value = "";
   }
 
 

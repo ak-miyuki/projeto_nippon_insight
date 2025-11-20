@@ -26,7 +26,7 @@ function autenticar(req, res) {
                                     idUsuario: resultadoAutenticar[0].idUsuario,
                                     email: resultadoAutenticar[0].email,
                                     nome: resultadoAutenticar[0].nome,
-                                    viagem: resultadoviagem
+                                    idViagem: resultadoAutenticar[0].idViagem
                                 });
                             })
                             .catch((erroViagem) => {

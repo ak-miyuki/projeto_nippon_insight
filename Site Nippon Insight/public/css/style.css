@@ -155,7 +155,7 @@ body {
   width: 55%;
   justify-content: center;
   align-items: center;
-  
+
 
 }
 
@@ -200,12 +200,12 @@ img {
 
 .card-login {
   gap: 10px;
-  max-height: 50vh;
+  min-height: 50vh;
   max-width: 35vw;
   min-width: 20vw;
   margin: 4vh 5vw;
   padding: 7vh 4vw;
-  
+
 }
 
 .formulario {
@@ -222,6 +222,15 @@ img {
 
 .campo {
   margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.campo span {
+  margin: 7px 0 2px 0;
 }
 
 /* Validação da senha */
@@ -249,6 +258,7 @@ img {
   height: 100%;
   width: 100%;
 }
+
 /* Validação da senha END */
 
 
@@ -267,7 +277,7 @@ img {
 
 }
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -282,12 +292,14 @@ img {
   border: #ED145B 3px solid;
   padding: 10px;
   margin-right: 10%;
+  z-index: 995;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
 }
+
 /* Div de Erros END */
 
 /* Div de gif de loading */
@@ -300,6 +312,7 @@ img {
   height: 50px;
   width: 50px;
 }
+
 /* Div de gif de loading END */
 
 /* ------------------------- CADASTRO END ------------------------- */
@@ -326,10 +339,30 @@ input {
   align-self: center;
   text-align: center;
   font-family: "Montserrat", sans-serif;
+  background-image: linear-gradient(to top, #decdac, #f5efe2);
+  background-color: #f5efe2;
+  border: 2px solid #bba77e;
+  border-radius: 5px;
+  color: #721d34;
 }
 
 input::placeholder {
   text-align: center;
   color: #721d34;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
+}
+
+select {
+  min-height: 4vh;
+  width: 70%;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  background-image: linear-gradient(to top, #decdac, #f5efe2);
+  background-color: #f5efe2;
+  border: 2px solid #bba77e;
+  border-radius: 5px;
+  color: #721d34;
 }

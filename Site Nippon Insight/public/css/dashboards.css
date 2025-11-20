@@ -123,7 +123,7 @@ body .janela {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom: 2px solid #c4b28b;
-  background-image: linear-gradient(to bottom, rgb(116, 28, 50), #bb6c85);
+  background-image: linear-gradient(to bottom, #741c32, #bb6c85);
 }
 
 .header-left .conteudo {
@@ -245,7 +245,10 @@ body .janela {
   border-radius: 5px;
   border: 2px solid #c4b28b;
   background-color: #101010;
+}
 
+.grafico_esquerda .titulo_grafico {
+  padding-top: 20px;
 }
 
 .dash .graficos_todos .graficos_direita {
@@ -267,15 +270,16 @@ body .janela {
   gap: 5px;
 }
 
-.grafico_progresso .titulo {
+.titulo_grafico {
   background-image: linear-gradient(to top right, #dfd4be, #c6a765, #bd6088, #9f3254);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 900;
-  padding-left: 10px;
+  justify-self: center;
+  align-self: center;
 }
 
 .grafico_progresso .barra_porcentagem {
@@ -297,7 +301,7 @@ body .janela {
 
 .grafico_progresso .bg_dourado {
   height: 100%;
-  width: 75%;
+  width: 0%;
   background-color: #bb6c85;
   border-radius: 7px;
 }
@@ -312,14 +316,34 @@ body .janela {
 }
 
 .dash .graficos_todos .graficos_direita .grafico_pizza {
-  height: 50vh;
+  height: 51vh;
   width: 100%;
   border-radius: 5px;
   border: 2px solid #c4b28b;
   background-color: #101010;
+  background-image: linear-gradient(to top right, );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grafico_pizza .container {
+  width: 90%;
+  height: 90%;
+}
+
+.grafico_pizza .titulo_grafico {
+  padding-top: 20px;
 }
 
 /* ------------------------- DASHBOARD END ------------------------ */
+
+/* -------------------------- CARD ERRO --------------------------- */
+
+
+
+/* ------------------------- CARD ERRO END ------------------------ */
 
 .label-captura {
   display: flex;
@@ -721,11 +745,32 @@ canvas {
   height: fit-content;
   min-width: 25px;
   cursor: pointer;
-  background-image: linear-gradient(to top, rgb(116, 28, 50), rgb(187, 108, 133));
+  background-image: linear-gradient(to top, #741c32, #bb6c85);
   align-self: center;
 }
 
 input {
+  min-height: 4vh;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  background-image: linear-gradient(to top, #decdac, #f5efe2);
+  background-color: #f5efe2;
+  border: 2px solid #bba77e;
+  border-radius: 5px;
+  color: #721d34;
+}
+
+input::placeholder {
+  text-align: center;
+  color: #721d34;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+
+select {
   min-height: 4vh;
   width: 70%;
   justify-self: center;
@@ -733,12 +778,7 @@ input {
   text-align: center;
   font-family: "Montserrat", sans-serif;
   background-image: linear-gradient(to top, #decdac, #f5efe2);
+  background-color: linear-gradiente(to top, #decdac, #f5efe2);
   border: 2px solid #bba77e;
   border-radius: 5px;
-}
-
-input::placeholder {
-  text-align: center;
-  color: #721d34;
-  font-weight: 500;
 }

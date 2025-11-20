@@ -13,9 +13,8 @@
 
     <link rel="stylesheet" href="./css/style.css" />
 
+    <link rel="icon" href="./assets/icons/mt_fuji_img.png" />
 
-    <link rel="icon" href="./assets/icon/favicon2.ico" />
-    <!-- -------------------------- CRIAR UM ícone pro Nippon Insight -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -137,7 +136,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
-                    sessionStorage.VIAGEM = JSON.stringify(json.viagem);
+                    sessionStorage.ID_VIAGEM = json.idViagem;
 
                     setTimeout(function () {
                         window.location = "./dashboard/dashboard.html";
@@ -160,6 +159,8 @@
         })
 
         return false;
+
+        senha_input.value = "";
     }
 
     function sumirMensagem() {

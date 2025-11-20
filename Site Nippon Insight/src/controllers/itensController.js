@@ -1,8 +1,9 @@
 var itensModel = require("../models/itensModel");
 
 function buscarItens(req, res) {
+  var idViagem = req.params.idViagem;
   
-  itensModel.buscarItens().then((resultado) => {
+  itensModel.buscarItens(idViagem).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -10,7 +11,7 @@ function buscarItens(req, res) {
     }
   }).catch(function (erro) {
     console.log(erro);
-    console.log("Houve um erro ao buscar as viagens: ", erro.sqlMessage);
+    console.log("Houve um erro ao buscar as iens: ", erro.sqlMessage);
     res.status(500).json(erro.sqlMessage);
   });
 }

@@ -31,7 +31,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/viagem", viagemRouter);
 app.use("/escolhas", escolhasRouter);
-app.use("/itens", escolhasRouter);
+app.use("/itens", itensRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

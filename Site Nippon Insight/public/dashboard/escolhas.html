@@ -22,10 +22,10 @@
 
 
     <!--FONT AWESOME-->
-    <!-- <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
-</head> -->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
 
-    <!-- <body onload=" atualizarFeed()"> -->
+<!-- <body onload=" atualizarFeed()"> -->
 
 <body onload="atualizarPagina()">
 
@@ -34,16 +34,16 @@
         <div class="container">
             <h1 class="titulo">『日本』Nippon Insight</h1>
             <ul class="navbar">
-                <li class="agora">
-                    <a href="#">DASHBOARD</a>
+                <li>
+                    <a href="./dashboard.html">DASHBOARD</a>
                 </li>
-                <li> | </li>
+                <li>  |  </li>
                 <li>
                     <a href="./viagem.html">EDITAR VIAGEM</a>
                 </li>
-
-                <li>
-                    <a href="./escolhas.html">ESCOLHAS</a>
+                
+                <li class="agora">
+                    <a href="#">ESCOLHAS</a>
                 </li>
 
             </ul>
@@ -136,41 +136,7 @@
                 </div>
             </div>
             <div class="graficos_todos">
-                <!-- gráfico de barras -->
-                <div class="grafico_esquerda">
-                    <div class="titulo_grafico">VALOR TOTAL POR TIPO DE GASTO</div>
-                    <div class="container">
-
-                        <!-- GRÁFICO DE BARRAS -->
-                        <canvas id="grafico_barras"></canvas>
-                    </div>
-
-                </div>
-                <div class="graficos_direita">
-                    <div class="grafico_progresso">
-                        <div class="titulo_grafico">PERCENTUAL DO VALOR GUARDADO</div>
-                        <div class="barra_porcentagem">
-                            <div class="bg_bege">
-                                <div class="bg_dourado" id="barra_porcentagem"> <!-- varia conforme % -->
-
-                                </div>
-                            </div>
-                            <div class="porcentagem">
-                                <h3 id="porcentagem_progresso">%</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grafico_pizza" id="div_grafico_pizza">
-                        <div class="titulo_grafico">GASTOS POR CATEGORIA</div>
-                        <div class="container" id="div_container_pizza">
-                            <!-- Gráfico de pizza -->
-                            <canvas id="grafico_pizza" width="400px" height="400px"></canvas>
-
-                        </div>
-
-
-                    </div>
-                </div>
+                
 
             </div>
 
@@ -185,56 +151,36 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    var BRL = 1;
-    var JPY = 28.77;
-    span_cotacao.innerHTML = `BRL ${BRL.toFixed(2)} = JPY ${JPY.toFixed(2)}`;
-    var valorTotal = 0;
-    var valor_guardado = 0;
-    
-    var idViagem = sessionStorage.ID_VIAGEM;
-    console.log(`Esse é o idViagem: `, idViagem);
+    var idViagem = JSON.parse(sessionStorage.VIAGEM).idViagem;
 
     function atualizarPagina() {
 
         var horas_voo = 50;
         span_horas_voo.innerHTML = `~${horas_voo} HORAS`;
-        
 
         fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
             .then(response => response.json())
             .then(listaViagem => {
-
-
-                if (idViagem == undefined) {
-                    iViagem = listaViagem[0].idViagem;
-                }
-                console.log('idViagem após fetch = ', idViagem);
 
                 span_estacao.innerHTML = listaViagem[0].estacao;
                 span_dt_ida.innerHTML = listaViagem[0].dtIda;
                 span_dt_volta.innerHTML = listaViagem[0].dtVolta;
                 span_dias_japao.innerHTML = listaViagem[0].diasJapao;
                 span_qtd_pessoas.innerHTML = listaViagem[0].qtdPessoas;
-
                 valor_guardado = Number(listaViagem[0].valorGuardado);
                 span_valor_guardado.innerHTML = valor_guardado.toLocaleString('pt-BR', { style: "currency", currency: 'BRL' });
-
                 valorTotal = Number(listaViagem[0].valorTotal);
                 span_valor_viagem.innerHTML = valorTotal.toLocaleString('pt-BR', { style: "currency", currency: 'BRL' });
-
                 var progresso = listaViagem[0].percentualGuardado;
-
                 porcentagem_progresso.innerHTML = `${progresso}%`;
-
-                if (progresso > 100) {
-                    progresso = 100
-                }
                 barra_porcentagem.style.width = `${progresso}%`;
 
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
 
-
+        if (idViagem == null) {
+            div_container_pizza.style.display = "none";
+        }
 
         function plotarGraficoPizza() {
 
@@ -255,9 +201,6 @@
                         valores.push(dados[i].valorTotal);
                     }
 
-                    if (categorias.length > 0) {
-                        div_container_pizza.style.display = "block"
-                    }
 
 
                     var ctx = document.getElementById("grafico_pizza").getContext("2d");

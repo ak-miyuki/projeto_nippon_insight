@@ -205,8 +205,7 @@ CREATE OR REPLACE VIEW vw_itensUsuario AS
 SELECT * FROM vw_itensUsuario;
 
 /*
-`SELECT * FROM vw_itensUsuario
-	WHERE idViagem IN(null, ${idViagem};`
+`SELECT * FROM vw_itensUsuario WHERE idViagem IN(null, ${idViagem};`
 */
 /* --------------------------------------- VIEW DA TABELA VIAGEM POR USUÁRIO: ---------------------------------------
 */
@@ -247,7 +246,7 @@ CREATE OR REPLACE VIEW vw_dadosUsuario AS
             senha,
             idViagem 
 		FROM usuario
-        JOIN viagem 
+        LEFT JOIN viagem 
 			ON idUsuario = fkUsuario;
 			
 SELECT * FROM vw_dadosUsuario;

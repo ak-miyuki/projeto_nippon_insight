@@ -51,7 +51,7 @@ body {
 }
 
 .navbar {
-  width: 350px;
+  width: 460px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -85,6 +85,156 @@ body {
 
 /* -------------------------- HEADER END -------------------------- */
 
+/* -------------------------- PÁGINA ESCOLHAS -------------------------- */
+/* ------------------------- MENU LATERAL ------------------------- */
+.header-left_escolhas {
+  position: fixed;
+  margin: 105px 30px 0 30px;
+  top: 0;
+  left: 0;
+  z-index: 997;
+  height: 80vh;
+  width: 24%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #c4b28b;
+  background-color: #101010;
+}
+
+.header-left_escolhas .conteudo {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.header-left_escolhas h3 {
+  background-image: linear-gradient(to top right, #dfd4be, #c6a765, #bd6088, #9f3254);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 1.3rem;
+}
+
+.header-left_escolhas h1 {
+  color: #c4b28b;
+  font-weight: 100;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.8rem;
+}
+
+.header-left_escolhas span {
+  color: #c4a158;
+  font-weight: 100;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.1rem;
+}
+
+/* ---------------------------------- MAIN --------------------------- */
+.opcoes {
+  /* height: 80%; */
+  width: 70%;
+  position: relative;
+  top: 0;
+  left: 28%;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 105px;
+  border-radius: 5px;
+  border: 2px solid #c4b28b;
+  background-color: #101010;
+  }
+
+.categoria {
+  width: 100%;
+  height: 7vh;
+  align-self: flex-start;
+  justify-content: center;
+  display: flex;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 2px solid #c4b28b;
+  background-image: linear-gradient(to bottom, #741c32, #bb6c85);
+}
+
+.conteudo_info {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px;
+
+}
+
+.foto {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+  justify-self: center;
+  background-image: linear-gradient(to bottom, #741c32, #bb6c85);
+}
+
+.info {
+  width: 30vw;;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-image: linear-gradient(to bottom, #741c32, #bb6c85);
+
+}
+
+.input_qtd {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  justify-content: space-evenly;
+  background-image: linear-gradient(to bottom, #741c32, #bb6c85);
+  gap: 7px;
+
+  
+}
+
+.opcoes h3 {
+  background-image: linear-gradient(to top right, #dfd4be, #c6a765, #bd6088, #9f3254);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 1.3rem;
+}
+
+.opcoes h1 {
+  color: #c4b28b;
+  font-weight: 100;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.8rem;
+}
+
+.opcoes span {
+  color: #c4a158;
+  font-weight: 100;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.1rem;
+}
+
+/* ------------------------ PÁGINA ESCOLHAS  END ------------------------ */
+
+
+
+/* -------------------------- PÁGINA DASHBOARD -------------------------- */
 /* ------------------------- MENU LATERAL ------------------------- */
 body .janela {
   display: flex;
@@ -99,7 +249,6 @@ body .janela {
 .header-left {
   position: fixed;
   margin: 105px 30px 0 30px;
-
   top: 0;
   left: 0;
   z-index: 997;
@@ -747,7 +896,9 @@ canvas {
   cursor: pointer;
   background-image: linear-gradient(to top, #741c32, #bb6c85);
   align-self: center;
+  justify-self: center;
 }
+
 
 input {
   min-height: 4vh;

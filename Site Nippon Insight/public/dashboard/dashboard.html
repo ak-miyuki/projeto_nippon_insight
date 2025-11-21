@@ -41,7 +41,7 @@
                 <li>
                     <a href="./viagem.html">EDITAR VIAGEM</a>
                 </li>
-
+                <li> | </li>
                 <li>
                     <a href="./escolhas.html">ESCOLHAS</a>
                 </li>
@@ -190,15 +190,20 @@
     span_cotacao.innerHTML = `BRL ${BRL.toFixed(2)} = JPY ${JPY.toFixed(2)}`;
     var valorTotal = 0;
     var valor_guardado = 0;
-    
+
     var idViagem = sessionStorage.ID_VIAGEM;
     console.log(`Esse é o idViagem: `, idViagem);
+
+    fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
+        .then(resposta => resposta.json()).then(json => {
+            sessionStorage.VIAGEM = JSON.stringify(json.idViagem);
+        });
 
     function atualizarPagina() {
 
         var horas_voo = 50;
         span_horas_voo.innerHTML = `~${horas_voo} HORAS`;
-        
+
 
         fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
             .then(response => response.json())
@@ -297,15 +302,19 @@
 
         plotarGraficoPizza();
 
+    }
 
 
 
 
-
+    function plotarGraficoBarras(resposta, tipo) {
 
 
 
     }
+
+
+
 
     function atualizarCaixinha() {
 
@@ -334,6 +343,12 @@
                     }),
                 })
                     .then(function (resposta) {
+
+                        setTimeout(() => {
+
+                            atualizarPagina();
+                        }, "2000");
+
                         console.log("resposta: ", resposta);
 
                         if (resposta.ok) {
@@ -360,10 +375,6 @@
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
 
-        setTimeout(() => {
-
-            atualizarPagina();
-        }, "2000");
 
         return false;
 

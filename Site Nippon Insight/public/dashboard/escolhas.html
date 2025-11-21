@@ -37,11 +37,11 @@
                 <li>
                     <a href="./dashboard.html">DASHBOARD</a>
                 </li>
-                <li>  |  </li>
+                <li> | </li>
                 <li>
                     <a href="./viagem.html">EDITAR VIAGEM</a>
                 </li>
-                
+                <li> | </li>
                 <li class="agora">
                     <a href="#">ESCOLHAS</a>
                 </li>
@@ -61,86 +61,83 @@
     <!----------------------------- HEADER END ----------------------------->
 
     <div class="janela">
-        <div class="header-left">
+        <div class="header-left_escolhas">
             <div class="menu_titulo">
-                <h1>SUA VIAGEM</h1>
+                <h1>Lista de Escolhas</h1>
             </div>
 
             <div class="conteudo">
                 <!-- COLOCAR OS CONTEÚDOS DO MENU -->
-                <!-- DATA DE IDA -->
+
+                <!-- CIDADES -->
                 <div class="menu_block">
-                    <h3>&#x1F338; Data de ida</h3>
-                    <span id="span_dt_ida"> --//-- </span>
+                    <h3>&#x1F338; CIDADES:</h3>
+                    <span id="span_cidades"> --//-- </span>
                 </div>
 
-                <!-- DATA DE VOLTA -->
+                <!-- INGRESSOS -->
                 <div class="menu_block">
-                    <h3>&#x1F338; Data de volta:</h3>
-                    <span id="span_dt_volta"> --//-- </span>
+                    <h3>&#x1F338; INGRESSOS:</h3>
+                    <span id="span_ingressos"> --//-- </span>
                 </div>
 
-                <!-- HORAS DE VÔO -->
+                <!-- ALIMENTAÇÃO -->
                 <div class="menu_block">
-                    <h3>&#x1F338; Horas de vôo:</h3>
-                    <span id="span_horas_voo"> --//-- </span>
+                    <h3>&#x1F338; ALIMENTAÇÃO:</h3>
+                    <span id="span_alimentacao"> --//-- </span>
                 </div>
 
-                <!-- DIAS NO JAPÃO -->
+                <!-- HOSPEDAGEM -->
                 <div class="menu_block">
-                    <h3>&#x1F338; Dias no Japão:</h3>
-                    <span id="span_dias_japao"> --//-- </span>
+                    <h3>&#x1F338; HOSPEDAGEM:</h3>
+                    <span id="span_hospedagem"> --//-- </span>
                 </div>
 
-                <!-- QUANTIDADE DE PESSOAS -->
+                <!-- TRANSPORTE -->
                 <div class="menu_block">
-                    <h3>&#x1F338; Quantidade de pessoas:</h3>
-                    <span id="span_qtd_pessoas"> --//-- </span>
+                    <h3>&#x1F338; TRANSPORTE</h3>
+                    <span id="span_transporte"> --//-- </span>
                 </div>
 
-                <!-- ATUALIZAR CAIXINHA -->
-                <div class="menu_block_ultimo">
-                    <h3>&#x1F338; Valor à Adicionar/Retirar:</h3>
-                    <input type="number" id="caixinha_input" placeholder="R$">
-                    <button class="botao" onclick="atualizarCaixinha()">ATUALIZAR CAIXINHA</button>
+                <!-- COMUNICAÇÃO -->
+                <div class="menu_block">
+                    <h3>&#x1F338; COMUNICAÇÃO:</h3>
+                    <span id="span_comunicacao"> --//-- </span>
                 </div>
 
             </div>
 
         </div>
 
-        <div class="dash">
-            <div class="kpi_bar">
-                <!-- estação -->
-                <div class="kpi">
-                    <h3>ESTAÇÃO ESCOLHIDA</h3>
-                    <span id="span_estacao">--//--</span>
+        <div class="opcoes" id="div_escolhas">
+            <div id="div_categoria">
+                <div class="categoria" id="div_tipo">
+                    <h1>${item.categoria}</h1>
                 </div>
-
-                <!-- cotação -->
-                <div class="kpi">
-                    <h3>COTAÇÃO ¥ / R$</h3>
-                    <span id="span_cotacao">--//--</span>
-                </div>
-
-                <!-- valor total da viagem -->
-                <div class="kpi">
-                    <h3>VALOR DA VIAGEM</h3>
-                    <span id="span_valor_viagem">--//--</span>
-                </div>
-
-                <!-- valor guardado -->
-                <div class="kpi">
-                    <h3>VALOR GUARDADO</h3>
-                    <span id="span_valor_guardado">--//--</span>
+                <div class="conteudo_info">
+                    <div class="foto">
+                        <span id="span_foto">${item.foto}</span>
+                    </div>
+                    <div id="div_info" class="info">
+                        <div id="div_nome">
+                            <h3>
+                                <span id="span_nome">${item.nome}</span>
+                            </h3>
+                        </div>
+                        <div id="div_descricao">
+                            <h3>Descrição:</h3>
+                            <span id="span_descricao">${item.descricao}</span>
+                        </div>
+                    </div>
+                    <div class="input_qtd">
+                        <h3>Preço unitário:</h3>
+                        <span id="span_preco">${item.preco}</span>
+                        <h3>Quantidade:</h3>
+                        <input type="text" id="input_preco${item.idItem}">
+                        <button class="botao" onclick="adicionar()">ADICIONAR</button>
+                    </div>
                 </div>
             </div>
-            <div class="graficos_todos">
-                
-
-            </div>
-
-
         </div>
     </div>
 

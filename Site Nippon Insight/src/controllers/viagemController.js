@@ -8,7 +8,7 @@ function buscarViagemPorUsuario(req, res) {
 
     if (resultado.length > 0) {
       res.status(200).json(resultado);
-      res.json(resultado)
+      // res.json(resultado)
     } else {
       res.status(204).json([]);
     }
@@ -135,7 +135,7 @@ function atualizarCaixinha(req, res) {
   }
 
 
-  viagemModel.atualizarCaixinha(idUsuario, novoValorGuardado)
+  viagemModel.atualizarCaixinha(novoValorGuardado, idUsuario)
     .then((resultado) => {
       res.status(201).json(resultado);
     }

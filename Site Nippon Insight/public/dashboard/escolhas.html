@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icons/mt_fuji_img.png" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="../assets/icons/mt_fuji_img.png" type="image/x-icon"> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="atualizarPagina()">
+<body>
 
     <!------------------------------- HEADER ------------------------------->
     <div class="header">
@@ -150,167 +150,4 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     var idViagem = JSON.parse(sessionStorage.VIAGEM).idViagem;
 
-    function atualizarPagina() {
-
-        var horas_voo = 50;
-        span_horas_voo.innerHTML = `~${horas_voo} HORAS`;
-
-        fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
-            .then(response => response.json())
-            .then(listaViagem => {
-
-                span_estacao.innerHTML = listaViagem[0].estacao;
-                span_dt_ida.innerHTML = listaViagem[0].dtIda;
-                span_dt_volta.innerHTML = listaViagem[0].dtVolta;
-                span_dias_japao.innerHTML = listaViagem[0].diasJapao;
-                span_qtd_pessoas.innerHTML = listaViagem[0].qtdPessoas;
-                valor_guardado = Number(listaViagem[0].valorGuardado);
-                span_valor_guardado.innerHTML = valor_guardado.toLocaleString('pt-BR', { style: "currency", currency: 'BRL' });
-                valorTotal = Number(listaViagem[0].valorTotal);
-                span_valor_viagem.innerHTML = valorTotal.toLocaleString('pt-BR', { style: "currency", currency: 'BRL' });
-                var progresso = listaViagem[0].percentualGuardado;
-                porcentagem_progresso.innerHTML = `${progresso}%`;
-                barra_porcentagem.style.width = `${progresso}%`;
-
-            })
-            .catch(error => console.error('Erro ao buscar dados:', error));
-
-        if (idViagem == null) {
-            div_container_pizza.style.display = "none";
-        }
-
-        function plotarGraficoPizza() {
-
-            Chart.defaults.font.family = 'Montserrat';
-            Chart.defaults.color = '#e3b062';
-
-            fetch(`/escolhas/${idViagem}`, { cache: 'no-store' })
-                .then(response => response.json())
-                .then(dados => {
-
-
-
-                    var categorias = [];
-                    var valores = [];
-
-                    for (var i = 0; i < dados.length; i++) {
-                        categorias.push(dados[i].categoria);
-                        valores.push(dados[i].valorTotal);
-                    }
-
-
-
-                    var ctx = document.getElementById("grafico_pizza").getContext("2d");
-
-                    new Chart(ctx, {
-                        type: 'pie',
-                        data: {
-                            labels: categorias,
-                            datasets: [{
-                                data: valores,
-                                backgroundColor: [
-                                    '#741c32',
-                                    '#e3b062',
-                                    '#bd6088',
-                                    '#dfd4be'
-
-                                ],
-                                borderColor: '#c4b28b',
-                                borderWidth: 2
-                            }]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {
-                            responsive: true,
-                            aspectRatio: 1.2,
-                            plugins: {
-                                legend: {
-                                    position: 'right'
-                                }
-                            }
-                        }
-                    });
-                })
-                .catch(erro => console.error("Erro no gráfico:", erro));
-
-        }
-
-        plotarGraficoPizza();
-
-
-
-
-
-
-
-
-
-    }
-
-    function atualizarCaixinha() {
-
-        fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
-            .then(response => response.json())
-            .then(listaViagem => {
-
-                // pegar valor atual
-                var novoValorGuardadoVar = Number(listaViagem[0].valorGuardado);
-
-                // pegar input
-                var caixinha = Number(caixinha_input.value);
-
-                // somar
-                novoValorGuardadoVar += caixinha;
-
-                // enviar ao banco
-                fetch("/viagem/atualizarCaixinha", {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        novoValorGuardadoServer: novoValorGuardadoVar,
-                        idUsuarioServer: sessionStorage.ID_USUARIO
-                    }),
-                })
-                    .then(function (resposta) {
-                        console.log("resposta: ", resposta);
-
-                        if (resposta.ok) {
-                            cardErro.style.display = "block";
-
-                            mensagem_erro.innerHTML =
-                                "Caixinha atualizada com sucesso! Recarregando a página do dashboard";
-
-                            setTimeout(() => {
-                                window.location = "dashboard.html";
-                            }, "2000");
-
-                            limparFormulario();
-                            finalizarAguardar();
-                        } else {
-                            throw "Houve um erro ao tentar realizar o cadastro!";
-                        }
-                    })
-                    .catch(function (resposta) {
-                        console.log(`#ERRO: ${resposta}`);
-                        finalizarAguardar();
-                    });
-
-            })
-            .catch(error => console.error('Erro ao buscar dados:', error));
-
-        setTimeout(() => {
-
-            atualizarPagina();
-        }, "2000");
-
-        return false;
-
-    }
-
-
-    function sumirMensagem() {
-        cardErro.style.display = "none";
-    }
 </script>

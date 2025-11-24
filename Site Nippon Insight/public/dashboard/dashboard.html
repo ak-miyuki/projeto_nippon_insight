@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icons/mt_fuji_img.png" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="../assets/icons/mt_fuji_img.png" type="image/x-icon"> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,8 @@
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <!-- <link rel="stylesheet" href="./../css/estilo.css" /> -->
-    <!-- <link rel="stylesheet" href="./../css/style.css" /> -->
+    <link rel="stylesheet" href="./../css/style.css" />
+
     <script src="../js/sessao.js"></script>
     <!-- <script src="./../js/alerta.js"></script> -->
 
@@ -22,10 +23,11 @@
 
 
     <!--FONT AWESOME-->
-    <!-- <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
-</head> -->
+    <!--  <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script> -->
 
-    <!-- <body onload=" atualizarFeed()"> -->
+</head>
+
+<!-- <body onload=" atualizarFeed()"> -->
 
 <body onload="atualizarPagina()">
 
@@ -194,15 +196,18 @@
     var idViagem = sessionStorage.ID_VIAGEM;
     console.log(`Esse é o idViagem: `, idViagem);
 
-    fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
-        .then(function (resposta) {
-            // console.log(`resposta.json(): `, resposta.json)
+    if (idViagem == 'null') {
+        fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
+            .then(function (resposta) {
+                // console.log(`resposta.json(): `, resposta.json)
 
-            resposta.json()
-                .then(function (respostaJson) {
-                    sessionStorage.ID_VIAGEM = JSON.stringify(respostaJson.idViagem);
-                })
-        });
+                resposta.json()
+                    .then(function (respostaJson) {
+                        sessionStorage.ID_VIAGEM = JSON.stringify(respostaJson.idViagem);
+                    })
+            });
+
+    }
 
     function atualizarPagina() {
 
@@ -247,70 +252,71 @@
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
 
+        plotarGraficoPizza();
+    }
+
+    function plotarGraficoPizza() {
+
+        Chart.defaults.font.family = 'Montserrat';
+        Chart.defaults.color = '#e3b062';
+
+        fetch(`/escolhas/${idViagem}`, { cache: 'no-store' })
+            .then(response => response.json())
+            .then(dados => {
 
 
-        function plotarGraficoPizza() {
 
-            Chart.defaults.font.family = 'Montserrat';
-            Chart.defaults.color = '#e3b062';
+                var categorias = [];
+                var valores = [];
 
-            fetch(`/escolhas/${idViagem}`, { cache: 'no-store' })
-                .then(response => response.json())
-                .then(dados => {
+                for (var i = 0; i < dados.length; i++) {
+                    categorias.push(dados[i].categoria);
+                    valores.push(dados[i].valorTotal);
+                }
 
-
-
-                    var categorias = [];
-                    var valores = [];
-
-                    for (var i = 0; i < dados.length; i++) {
-                        categorias.push(dados[i].categoria);
-                        valores.push(dados[i].valorTotal);
-                    }
-
-                    if (categorias.length > 0) {
-                        div_container_pizza.style.display = "block"
-                    }
+                if (categorias.length > 0) {
+                    div_container_pizza.style.display = "block"
+                }
 
 
-                    var ctx = document.getElementById("grafico_pizza").getContext("2d");
+                var ctx = document.getElementById("grafico_pizza").getContext("2d");
 
-                    new Chart(ctx, {
-                        type: 'pie',
-                        data: {
-                            labels: categorias,
-                            datasets: [{
-                                data: valores,
-                                backgroundColor: [
-                                    '#741c32',
-                                    '#e3b062',
-                                    '#bd6088',
-                                    '#dfd4be'
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: categorias,
+                        datasets: [{
+                            data: valores,
+                            backgroundColor: [
+                                '#741c32',
+                                '#e3b062',
+                                '#bd6088',
+                                '#dfd4be'
 
-                                ],
-                                borderColor: '#c4b28b',
-                                borderWidth: 2
-                            }]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {
-                            responsive: true,
-                            aspectRatio: 1.2,
-                            plugins: {
-                                legend: {
-                                    position: 'right'
-                                }
+                            ],
+                            borderColor: '#c4b28b',
+                            borderWidth: 2
+                        }]
+                    },
+                    plugins: [ChartDataLabels],
+                    options: {
+                        responsive: true,
+                        aspectRatio: 1.2,
+                        plugins: {
+                            legend: {
+                                position: 'right'
                             }
                         }
-                    });
-                })
-                .catch(erro => console.error("Erro no gráfico:", erro));
-
-        }
-
-        plotarGraficoPizza();
+                    }
+                });
+            })
+            .catch(erro => console.error("Erro no gráfico:", erro));
 
     }
+
+
+
+
 
 
 
@@ -326,67 +332,59 @@
 
     function atualizarCaixinha() {
 
-        fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
-            .then(response => response.json())
-            .then(listaViagem => {
+        var novoValorGuardadoVar = valor_guardado;
+        var caixinha = Number(caixinha_input.value);
 
-                // pegar valor atual
-                var novoValorGuardadoVar = Number(listaViagem[0].valorGuardado);
+        novoValorGuardadoVar += caixinha;
 
-                // pegar input
-                var caixinha = Number(caixinha_input.value);
+        // enviar ao banco
+        fetch("/viagem/atualizarCaixinha", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                novoValorGuardadoServer: novoValorGuardadoVar,
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            }),
+        })
+            .then(function (resposta) {
 
-                // somar
-                novoValorGuardadoVar += caixinha;
+                setTimeout(() => {
 
-                // enviar ao banco
-                fetch("/viagem/atualizarCaixinha", {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        novoValorGuardadoServer: novoValorGuardadoVar,
-                        idUsuarioServer: sessionStorage.ID_USUARIO
-                    }),
-                })
-                    .then(function (resposta) {
+                    atualizarPagina();
+                }, "2000");
 
-                        setTimeout(() => {
+                console.log("resposta: ", resposta);
 
-                            atualizarPagina();
-                        }, "2000");
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
 
-                        console.log("resposta: ", resposta);
+                    mensagem_erro.innerHTML =
+                        "Caixinha atualizada com sucesso! Recarregando a página do dashboard";
 
-                        if (resposta.ok) {
-                            cardErro.style.display = "block";
+                    setTimeout(() => {
+                        window.location = "dashboard.html";
+                    }, "2000");
 
-                            mensagem_erro.innerHTML =
-                                "Caixinha atualizada com sucesso! Recarregando a página do dashboard";
-
-                            setTimeout(() => {
-                                window.location = "dashboard.html";
-                            }, "2000");
-
-                            limparFormulario();
-                            finalizarAguardar();
-                        } else {
-                            throw "Houve um erro ao tentar realizar o cadastro!";
-                        }
-                    })
-                    .catch(function (resposta) {
-                        console.log(`#ERRO: ${resposta}`);
-                        finalizarAguardar();
-                    });
-
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
             })
-            .catch(error => console.error('Erro ao buscar dados:', error));
-
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
 
         return false;
-
     }
+
+
+
+
+
 
 
     function sumirMensagem() {

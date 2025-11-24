@@ -34,7 +34,7 @@ function atualizarViagem(fkUsuario, estacao, dtIda, dtVolta, qtdPessoas, valorGu
 }
 
 
-function atualizarCaixinha(idUsuario, novoValorGuardado) {
+function atualizarCaixinha(novoValorGuardado, idUsuario) {
 
   var instrucaoSql = `UPDATE viagem SET valorGuardado = ${novoValorGuardado} WHERE fkUsuario = ${idUsuario};`;
 

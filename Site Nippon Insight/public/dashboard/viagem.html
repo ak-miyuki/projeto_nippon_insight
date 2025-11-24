@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../css/dashboards.css" />
 
 
-  <link rel="icon" href="../assets/icons/mt_fuji_img.png" />
+  <!-- <link rel="icon" href="../assets/icons/mt_fuji_img.png" /> -->
 
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
@@ -141,9 +141,9 @@
     var dtVoltaVar = dt_volta_input.value;
     var qtdPessoasVar = qtd_pessoas_input.value;
     var valorGuardadoVar = Number(valor_guardado_input.value);
-  var idViagem = sessionStorage.ID_VIAGEM;
+    var idViagem = sessionStorage.ID_VIAGEM;
 
-      console.log(idViagem)
+    console.log(idViagem)
 
     // Verificando se há algum campo em branco
     if (
@@ -187,24 +187,24 @@
 
 
               resposta.json()
-              .then(function (respostaFormatada) {
-                console.log(respostaFormatada)
-                console.log(respostaFormatada.insertId)
+                .then(function (respostaFormatada) {
+                  console.log(respostaFormatada)
+                  console.log(respostaFormatada.insertId)
 
-                var idViagem = respostaFormatada.insertId;
+                  var idViagem = respostaFormatada.insertId;
 
-                sessionStorage.ID_VIAGEM = idViagem;
-                
-                // fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
-                //   .then(function (resposta){
-                //     console.log(resposta)
-  
-                //     resposta.json().then(json => {
-                //       console.log(json)
-                //   }); 
-                // }
-                // )
-              })
+                  sessionStorage.ID_VIAGEM = idViagem;
+
+                  // fetch(`/viagem/${sessionStorage.ID_USUARIO}`)
+                  //   .then(function (resposta){
+                  //     console.log(resposta)
+
+                  //     resposta.json().then(json => {
+                  //       console.log(json)
+                  //   }); 
+                  // }
+                  // )
+                })
 
 
 

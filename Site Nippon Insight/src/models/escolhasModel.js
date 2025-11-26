@@ -1,5 +1,15 @@
 var database = require("../database/config");
 
+function buscarVotosLugares() {
+
+  var instrucaoSql = `SELECT * FROM vw_votosLugares;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+var database = require("../database/config");
+
 function buscarEscolhasPorViagem(idViagem) {
 
   var instrucaoSql = `SELECT * FROM vw_valorCategoria WHERE idViagem = ${idViagem};`;
@@ -18,6 +28,7 @@ function cadastrar(fkViagem, fkItem, qtd) {
 
 
 module.exports = {
+  buscarVotosLugares,
   buscarEscolhasPorViagem,
   cadastrar
 }

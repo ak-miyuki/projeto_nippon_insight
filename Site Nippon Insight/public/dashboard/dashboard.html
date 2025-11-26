@@ -140,11 +140,11 @@
             <div class="graficos_todos">
                 <!-- gráfico de barras -->
                 <div class="grafico_esquerda">
-                    <div class="titulo_grafico">VALOR TOTAL POR TIPO DE GASTO</div>
+                    <div class="titulo_grafico">LOCAIS MAIS VOTADOS</div>
                     <div class="container">
 
                         <!-- GRÁFICO DE BARRAS -->
-                        <canvas id="grafico_barras" width="400px" height="400px"></canvas>
+                        <canvas id="grafico_barras" width="400px" height="370px"></canvas>
                     </div>
 
                 </div>
@@ -231,13 +231,16 @@
                     span_dt_ida.innerHTML = listaViagem[0].dtIda;
                     span_dt_volta.innerHTML = listaViagem[0].dtVolta;
                     span_dias_japao.innerHTML = listaViagem[0].diasJapao;
-                    span_qtd_pessoas.innerHTML = listaViagem[0].qtdPessoas;
+
+                    var qtd_pessoas = Number(listaViagem[0].qtdPessoas);
+                    span_qtd_pessoas.innerHTML = qtd_pessoas
 
                     valor_guardado = Number(listaViagem[0].valorGuardado);
                     span_valor_guardado.innerHTML = valor_guardado.toLocaleString('pt-BR', { style: "currency", currency: 'BRL' });
 
                     valorTotal = Number(listaViagem[0].valorTotal);
-                    span_valor_viagem.innerHTML = valorTotal.toLocaleString('pt-BR', { style: "currency", currency: 'BRL' });
+                    var valorMultiPessoas = valorTotal * qtd_pessoas;
+                    span_valor_viagem.innerHTML = valorMultiPessoas.toLocaleString('pt-BR', { style: "currency", currency: 'BRL' });
 
                     var progresso = listaViagem[0].percentualGuardado;
 
@@ -249,10 +252,11 @@
                     barra_porcentagem.style.width = `${progresso}%`;
                 }
 
+                obterDadosGraficoPizza();
+                obterDadosGraficoBarras();
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
 
-        obterDadosGraficoPizza();
     }
 
     function obterDadosGraficoPizza() {
@@ -275,6 +279,7 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico de pizza: ${error.message}`);
             });
     }
+
 
     function plotarGraficoPizza(resposta, idViagem) {
 
@@ -306,7 +311,7 @@
                         '#e3b062',
                         '#bd6088',
                         '#dfd4be'
-                        
+
                     ],
                     borderColor: '#c4b28b',
                     borderWidth: 2
@@ -326,17 +331,17 @@
 
         let myChart = new Chart(document.getElementById("grafico_pizza"), config);
     }
-        
-function obterDadosGraficoBarras() {
 
-        fetch(`/escolhas/${idViagem}`, { cache: 'no-store' })
+    function obterDadosGraficoBarras() {
+
+        fetch(`/escolhas/buscarVotosLugares`, { cache: 'no-store' })
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         resposta.reverse();
 
-                        plotarGraficoBarras(resposta, idViagem);
+                        plotarGraficoBarras(resposta);
 
                     });
                 } else {
@@ -348,38 +353,42 @@ function obterDadosGraficoBarras() {
             });
     }
 
-    function plotarGraficoBarras(resposta, tipo) {
+    function plotarGraficoBarras(resposta) {
 
         Chart.defaults.font.family = 'Montserrat';
         Chart.defaults.color = '#e3b062';
 
         console.log('iniciando plotagem do gráfico de barra...');
 
-        var categorias = [];
-        var valores = [];
+        var lugares = [];
+        var votos = [];
 
         for (var i = 0; i < resposta.length; i++) {
-            categorias.push(resposta[i].categoria);
-            valores.push(resposta[i].valorTotal);
+            lugares.push(resposta[i].lugar);
+            votos.push(resposta[i].votos);
         }
 
-        if (categorias.length > 0) {
-            div_container_barra.style.display = "block"
+        if (lugares.length > 0) {
+            grafico_barras.style.display = "block"
         }
 
         var config = {
             type: 'bar',
             data: {
-                labels: categorias,
+                labels: lugares,
                 datasets: [{
-                    data: valores,
-                    axis: 'y',
+                    barPercentage: 1,
+                    categoryPercentage: 0.7,
+                    maxBarThickness: 45,
+                    data: votos,
+                    indexAxis: 'y',
+
                     backgroundColor: [
                         '#741c32',
                         '#e3b062',
                         '#bd6088',
                         '#dfd4be'
-                        
+
                     ],
                     borderColor: '#c4b28b',
                     borderWidth: 2
@@ -388,10 +397,10 @@ function obterDadosGraficoBarras() {
             // plugins: [ChartDataLabels],
             options: {
                 responsive: true,
-                aspectRatio: 1.2,
+                maintainAspectRatio: 3,
                 plugins: {
                     legend: {
-                        position: 'right'
+                        display: false
                     }
                 }
             }

@@ -44,6 +44,8 @@ body {
 .header a {
   text-decoration: none;
   color: #e3b062;
+  align-self: center;
+  justify-self: center;
 }
 
 .agora {
@@ -398,6 +400,14 @@ body .janela {
 
 .grafico_esquerda .titulo_grafico {
   padding-top: 20px;
+}
+
+.grafico_esquerda .container {
+    width: 100%;
+    max-width: 480px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .dash .graficos_todos .graficos_direita {

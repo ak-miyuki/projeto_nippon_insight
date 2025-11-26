@@ -8,7 +8,7 @@ function buscarViagemPorUsuario(req, res) {
 
     if (resultado.length > 0) {
       res.status(200).json(resultado);
-      // res.json(resultado)
+     
     } else {
       res.status(204).json([]);
     }

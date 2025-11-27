@@ -147,11 +147,12 @@ body {
   position: relative;
   top: 0;
   left: 28%;
-  height: 100vh;
+  height: fit-content;
   overflow: auto;
   display: flex;
   flex-direction: column;
   margin-top: 105px;
+  padding-bottom: 20px;
   border-radius: 5px;
   border: 2px solid #c4b28b;
   background-color: #101010;
@@ -203,7 +204,6 @@ body {
   justify-content: space-evenly;
   background-image: linear-gradient(to bottom, #741c32, #bb6c85);
   gap: 7px;
-
   
 }
 
@@ -231,6 +231,15 @@ body {
   justify-self: center;
   font-size: 1.1rem;
 }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  }
+
+  .buttons button {
+    margin: 7px 7px 7px 7px;
+  }
 
 /* ------------------------ PÁGINA ESCOLHAS  END ------------------------ */
 

@@ -7,4 +7,9 @@ router.get("/", function (req, res) {
   itensController.buscarItens(req, res);
 });
 
+
+router.get("/", function (req, res) {
+  itensController.buscarItensPorViagem(req, res);
+});
+
 module.exports = router;

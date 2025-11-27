@@ -69,16 +69,10 @@
             <div class="conteudo">
                 <!-- COLOCAR OS CONTEÚDOS DO MENU -->
 
-                <!-- CIDADES -->
+                <!-- LUGARES -->
                 <div class="menu_block">
-                    <h3>&#x1F338; CIDADES:</h3>
-                    <span id="span_cidades"> --//-- </span>
-                </div>
-
-                <!-- INGRESSOS -->
-                <div class="menu_block">
-                    <h3>&#x1F338; INGRESSOS:</h3>
-                    <span id="span_ingressos"> --//-- </span>
+                    <h3>&#x1F338; LUGARES:</h3>
+                    <span id="span_lugares"> --//-- </span>
                 </div>
 
                 <!-- ALIMENTAÇÃO -->
@@ -134,8 +128,12 @@
                         <span id="span_preco">${item.preco}</span>
                         <h3>Quantidade:</h3>
                         <input type="text" id="input_preco${item.idItem}">
-                        <button class="botao" onclick="adicionar()">ADICIONAR</button>
                     </div>
+                </div>
+                <div class="buttons">
+                    <button class="botao" id="button_anterior">ANTERIOR</button>
+                    <button class="botao" id="button_proximo">PRÓXIMO</button>
+                    <button class="botao" onclick="confirmar()">CONFIRMAR</button>
                 </div>
             </div>
         </div>

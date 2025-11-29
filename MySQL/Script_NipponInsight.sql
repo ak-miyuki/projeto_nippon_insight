@@ -56,14 +56,29 @@ CREATE TABLE item (
 
 
 INSERT INTO item (nomeItem, descricao, preco, tipo, categoria, foto) VALUES
+	
+-- LOCAIS
+	('Tokyo (Tóquio)', 'Cidade de Tóquio, capital do Japão, une o tradicional ao moderno, a cidade mais tecnológica do Japão, tem vários bairros famosos como Shibuya, Shinjuku, Ginza, Akihabara, Harajuku e Odaiba', 0, 'Cidade','Lugar', NULL), -- Tokyo
+	('Yokohama', 'Cidade de Yokohama, importante centro de comércio internacional, moderna e onde muitos filmes e doramas são gravados', 0, 'Cidade','Lugar', NULL), -- Tokyo
+	('Kyoto (Quioto)', 'Cidade de Quioto, antiga capital do Japão tem muitos templos e bairros antigos e você pode experimentar muito da cultura tradicional japonesa, comer doces típicos e ver gueixas, ninjas e samurais', 0, 'Cidade','Lugar', NULL), -- Kyoto
+	('Osaka', 'Cidade de Osaka, uma das grandes cidades do Japão, tem aeroporto internacional, outlets, e é lá que fica a Universal Studios', 0, 'Cidade','Lugar', NULL), -- Osaka
+	('Hiroshima', 'Cidade de Hiroshima, cidade onde caiu uma das bombas nucleares, é possível ver um pouco da história em locais preservados, aprender no museu e presenciar o resultado da restauração da destruição. Ela existe como um símbolo da paz, para nos lembrar dos estragos que ataques nucleares podem causar', 0, 'Cidade','Lugar', NULL), -- Hiroshima
+	('Fukuoka', 'Cidade de Fukuoka, cidade com praias, templos e shopping modernos', 0, 'Cidade','Lugar', NULL), -- Fukuoka
+	('Sapporo', 'Cidade de Sapporo, conhecida pela gastronomia e pelo famoso festival da neve, onde enormes esculturas de neve e gelo são expostas no início do ano', 0, 'Cidade','Lugar', NULL), -- Sapporo
+	('Okinawa', 'Região de praias de areia branca e águas cristalinas com grande variedade de corais e vida submarina.', 0, 'Região','Lugar', NULL), -- Okinawa
+	('Mt. Fuji', 'Monte Fuji, é possível escalar o monte Fuji nos meses de julho a setembro', 140.00, 'Região','Lugar', NULL), -- Mt Fuji
+    
+	('Tokyo Disneyland', 'A Disneyland do Japão, um parque temático fantástico do reino da fantasia', 270.00, 'Atração','Lugar', NULL), -- Tokyo Disneyland
+	('Tokyo Skytree', 'A torre mais alta de Tóquio (450 andares)', 105.00, 'Atração','Lugar', NULL), -- Tokyo Skytree
+	('Tokyo Tower', 'A torre mais alta de Tóquio (250 m)', 105.00, 'Atração','Lugar', NULL), -- Tokyo Skytree
+	('Tokyo teamLab - Tokyo', 'Museu de imersão com imagens um conjunto de artistas', 130.00, 'Atração','Lugar', NULL), -- Tokyo teamLab
+	('Universal Studios - Osaka', 'A Universal do Japão, um parque temático fantástico com atrações como o castelo do Harry Potter e outros filmes', 830.00, 'Atração','Lugar', NULL), -- Osaka Universal
+
 	('Passagem de avião', 'Passagem de ida', 6500.00, 'Avião','Transporte', NULL), -- Passagem avião
 	('Passagem de avião',  'Passagem de volta', 6500.00, 'Avião','Transporte', NULL),-- Passagem avião
-	('JR Rail Pass - 7 DIAS', 'COMUM (ADULTO)', 1969.37, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
-	('JR Rail Pass - 14 DIAS', 'COMUM (ADULTO)', 3151.00, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
-	('JR Rail Pass - 21 DIAS', 'COMUM (ADULTO)', 3938.75, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
-	('JR Rail Pass - 7 DIAS', 'COMUM (CRIANÇA)', 984.69, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
-	('JR Rail Pass - 14 DIAS', 'COMUM (CRIANÇA)', 1575.50, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
-	('JR Rail Pass - 21 DIAS', 'COMUM (CRIANÇA)', 1969.37, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
+	('JR Rail Pass - 7 DIAS', 'COMUM', 1969.37, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
+	('JR Rail Pass - 14 DIAS', 'COMUM', 3151.00, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
+	('JR Rail Pass - 21 DIAS', 'COMUM', 3938.75, 'Trem-bala', 'Transporte', NULL), -- JR rail pass
 	('Bilhete Metrô/Ônibus',  'Valor gasto em bilhetes por dia', 50.00, 'Metrô/Ônibus','Transporte' , NULL), -- Bilhete metrô/ônibus
     
     ('Pocket WiFi - 1 DIA', 'Roteador de bolso', 10.00, 'Internet','Comunicação', NULL), -- Pocket wifi
@@ -88,7 +103,6 @@ INSERT INTO item (nomeItem, descricao, preco, tipo, categoria, foto) VALUES
 	('Suco garrafa', 'Suco em garrafa de 300 - 500ml', 6.00, 'Bebida', 'Alimentação', NULL), -- Bebibas
 	('Bebida de garrafa', 'Suco em garrafa de 300 - 500ml', 5.00, 'Bebida', 'Alimentação', NULL), -- Bebibas
     
-	
 	('Taiyaki', 'Bolinho frito em formato de peixe com recheio (creme/doce de feijão)', 10, 'Doces', 'Alimentação', NULL), -- Doces
 	('Mochi', 'Bolinho feito com farinha de arroz recheado com doce de feijão', 10, 'Doces', 'Alimentação', NULL), -- Doces
 	('Daifuku', 'Bolinho feito com farinha de arroz recheado com doce de feijão e morango', 10, 'Doces', 'Alimentação', NULL), -- Doces
@@ -148,8 +162,9 @@ CREATE TABLE escolha (
 INSERT INTO escolha VALUES
 	(DEFAULT, 1000, 5000, 1),
 	(DEFAULT, 1000, 5001, 1),
-	(DEFAULT, 1000, 5002, 1),
-	(DEFAULT, 1000, 5014, 7),
+	(DEFAULT, 1000, 5007, 1),
+	(DEFAULT, 1000, 5010, 1),
+	(DEFAULT, 1000, 5014, 1),
 	(DEFAULT, 1000, 5015, 1),
 	(DEFAULT, 1000, 5019, 6),
 	(DEFAULT, 1000, 5050, 3),
@@ -164,7 +179,7 @@ INSERT INTO escolha VALUES
 	(DEFAULT, 1001, 5000, 1),
 	(DEFAULT, 1001, 5001, 1),
 	(DEFAULT, 1001, 5002, 1),
-	(DEFAULT, 1001, 5014, 7),
+	(DEFAULT, 1001, 5014, 1),
 	(DEFAULT, 1001, 5015, 1),
 	(DEFAULT, 1001, 5019, 6),
 	(DEFAULT, 1001, 5050, 3),
@@ -179,7 +194,7 @@ INSERT INTO escolha VALUES
     
 SELECT * FROM escolha;
 
-
+SELECT * FROM item;
  
 -- ----------------------------------- FIM TABELA escolha ----------------------------------------
 
@@ -202,10 +217,10 @@ CREATE OR REPLACE VIEW vw_itensUsuario AS
         LEFT JOIN escolha 
 			ON item.idItem = escolha.fkItem;
             
-SELECT * FROM vw_itensUsuario;
+SELECT * FROM vw_itensUsuario where fkViagem = 1000 OR ISNULL(fkViagem);
 
 /*
-`SELECT * FROM vw_itensUsuario WHERE idViagem IN(null, ${idViagem};`
+`SELECT * FROM vw_itensUsuario where fkViagem = ${idViagem} OR ISNULL(fkViagem);`
 */
 /* --------------------------------------- VIEW DA TABELA VIAGEM POR USUÁRIO: ---------------------------------------
 */
@@ -228,7 +243,7 @@ CREATE OR REPLACE VIEW vw_dadosViagem AS
 									SUM(e.qtd * i.preco) AS soma
 								FROM escolha AS e	
 								INNER JOIN item AS i ON i.idItem = e.fkItem
-								GROUP BY e.fkViagem) v2 ON v2.idViagem = v.idViagem;
+								GROUP BY e.fkViagem) AS v2 ON v2.idViagem = v.idViagem;
                             
 SELECT * FROM vw_dadosViagem;
 
@@ -256,13 +271,21 @@ SELECT * FROM vw_dadosUsuario;
 /*
 --------------------------------------- VIEW DO VALOR POR CATEGORIA POR USUÁRIO: ---------------------------------------
 */
-CREATE OR REPLACE VIEW vw_valorCategoria AS SELECT idUsuario, idViagem, categoria, SUM(preco*qtd) AS valorTotal FROM usuario JOIN viagem ON fkUsuario = idUsuario JOIN escolha ON escolha.fkViagem = viagem.idViagem JOIN item ON fkItem = idItem GROUP BY idUsuario, idViagem, categoria;
+CREATE OR REPLACE VIEW vw_valorCategoria AS 
+	SELECT idUsuario, 
+			idViagem, 
+			categoria, 
+			SUM(preco*qtd) AS valorTotal 
+		FROM usuario 
+        JOIN viagem ON fkUsuario = idUsuario 
+        JOIN escolha ON escolha.fkViagem = viagem.idViagem 
+        JOIN item ON fkItem = idItem 
+			GROUP BY idUsuario, idViagem, categoria;
 
 SELECT * FROM vw_valorCategoria;
 
 /*
-`SELECT * FROM vw_valorCategoria
-WHERE idViagem = ${idViagem};`
+`SELECT * FROM vw_valorCategoria WHERE idViagem = ${idViagem};`
 */
 
 
@@ -272,6 +295,25 @@ WHERE idViagem = ${idViagem};`
 -----------------------------------------------------------------------------------------------------------------------
 */
 
+/*
+------------------------------ VIEW DOS LOCAIS MAIS ESCOLHIDOS P/ GRÁFICO DE BARRAS -----------------------------------
+*/
+-- item (nomeItem, descricao, preco, tipo, categoria, foto)
+
+CREATE OR REPLACE VIEW vw_votosLugares AS
+	SELECT nomeItem AS lugar, 
+		COUNT(fkViagem) AS votos
+			FROM item i
+            JOIN escolha e ON e.fkItem = i.idItem
+				WHERE categoria = 'Lugar'
+					GROUP BY nomeItem;
+                    
+SELECT * FROM vw_votosLugares;
+
+
+/*
+-----------------------------------------------------------------------------------------------------------------------
+*/
 SELECT idUsuario,
 		nome,
         categoria,

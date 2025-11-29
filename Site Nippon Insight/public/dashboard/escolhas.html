@@ -27,7 +27,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body onload="atualizarPagina()">
 
     <!------------------------------- HEADER ------------------------------->
     <div class="header">
@@ -106,28 +106,28 @@
         <div class="opcoes" id="div_escolhas">
             <div id="div_categoria">
                 <div class="categoria" id="div_tipo">
-                    <h1>${item.categoria}</h1>
+                    <!-- <h1>${listaItens.categoria}</h1> -->
                 </div>
                 <div class="conteudo_info">
                     <div class="foto">
-                        <span id="span_foto">${item.foto}</span>
+                        <!-- <span id="span_foto">${listaItens.foto}</span> -->
                     </div>
                     <div id="div_info" class="info">
                         <div id="div_nome">
                             <h3>
-                                <span id="span_nome">${item.nome}</span>
+                                <!-- <span id="span_nome">${listaItens.nome}</span> -->
                             </h3>
                         </div>
                         <div id="div_descricao">
                             <h3>Descrição:</h3>
-                            <span id="span_descricao">${item.descricao}</span>
+                            <!-- <span id="span_descricao">${listaItens.descricao}</span> -->
                         </div>
                     </div>
                     <div class="input_qtd">
                         <h3>Preço unitário:</h3>
-                        <span id="span_preco">${item.preco}</span>
+                        <!-- <span id="span_preco">${listaItens.preco}</span> -->
                         <h3>Quantidade:</h3>
-                        <input type="text" id="input_preco${item.idItem}">
+                        <input type="text" id="input_preco${listaItens.idItem}">
                     </div>
                 </div>
                 <div class="buttons">
@@ -146,8 +146,80 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    var idViagem = JSON.parse(sessionStorage.VIAGEM).idViagem;
+    var idViagem = sessionStorage.VIAGEM;
 
-    
+    var listaCategorias = ['Lugar', 'Transporte', 'Comunicação', 'Hospedagem', 'Alimentação'];
+
+    function atualizarPagina() {
+
+
+        fetch(`/viagem/buscarItens`)
+            .then(response => response.json())
+            .then(listaItens => {
+
+                if (listaItens.length === 0) {
+                    alert("errinho: listaItens está vazia");
+                } else {
+
+                    console.log(listaItens);
+
+
+                    // var conteudo = "";
+
+                    // for (var i = 0; i < listaCategorias.length; i++) {
+
+                    //     conteudo = `
+                    //         <div id="div_categoria">
+                    //             <div class="categoria" id="div_tipo">
+                    //                 <h1>${listaCategorias[i]}</h1>
+                    //             </div>
+                    //         <br>
+                    //         `
+
+                    //     for (var j = 0; j < listaItens.length; j++) {
+
+                    //         if (listaCategorias[i] == listaItens[j].categoria) {
+
+                    //             conteudo += `
+                    //             <div class="conteudo_info">
+                    //                 <div class="foto">
+                    //                     <span id="span_foto">${listaItens[j].foto}</span>
+                    //                 </div>
+                    //                 <div id="div_info" class="info">
+                    //                     <div id="div_nome">
+                    //                         <h3>
+                    //                             <span id="span_nome">${listaItens[j].nome}</span>
+                    //                         </h3>
+                    //                         </div>
+                    //                     <div id="div_descricao">
+                    //                         <h3>Descrição:</h3>
+                    //                             <span id="span_descricao">${listaItens[j].descricao}</span>
+                    //                     </div>
+                    //                     </div>
+                    //                     <div class="input_qtd">
+                    //                         <h3>Preço unitário:</h3>
+                    //                             <span id="span_preco">${listaItens[j].preco}</span>
+                    //                         <h3>Quantidade:</h3>
+                    //                         <input type="text" id="input_preco${listaItens[j].idItem}">
+                    //                         </div>
+                    //                     </div>
+                    //                     <div class="buttons">
+                                                
+                    //                         <button class="botao" id="button_proximo">PRÓXIMO</button>
+                    //                     </div>
+                    //                 </div>
+                    //                                             `
+                    //         }
+                    //     }
+                    // }
+                }
+            
+
+            })
+            .catch (error => console.error('Erro ao buscar dados dos itens:', error));
+
+    // div_escolhas.innerHTML = conteudo;
+    }
+
 
 </script>

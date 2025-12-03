@@ -12,9 +12,9 @@ function buscarItens() {
 
 
 // buscar itens por usuário
-function buscarItensPorViagem(idViagem, fkItem) {
+function buscarItensPorViagem(idViagem) {
   
-  var instrucaoSql = `SELECT * FROM vw_itensUsuario WHERE idViagem = ${idViagem}; AND fkItem = ${fkItem}`;
+  var instrucaoSql = `SELECT * FROM vw_itensUsuario WHERE idViagem = ${idViagem};`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

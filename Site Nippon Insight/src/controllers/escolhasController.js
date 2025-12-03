@@ -43,11 +43,12 @@ console.log("BODY RECEBIDO:", req.body);
   var qtd = req.body.qtdServer;
 
   
-
   escolhasModel.buscarEscolhaEspecifica(fkViagem, fkItem)
     .then(resultado => {
 
       if (resultado.length > 0) {
+
+        console.log(resultado)
 
         return escolhasModel.atualizarEscolhas(fkViagem, fkItem, qtd)
           .then(() => {
@@ -77,94 +78,8 @@ console.log("BODY RECEBIDO:", req.body);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function cadastrar(req, res) {
-//   var fkViagem = req.body.fkViagemServer;
-//   var fkItem = req.body.fkItemServer;
-//   var qtd = req.body.qtdServer;
-
-
-//   if (fkViagem == undefined) {
-//     res.status(400).send("idViagem está undefined!");
-//   }
-
-//   if (fkItem == undefined) {
-//     res.status(400).send("idItem está undefined!");
-//   }
-//   if (qtd == undefined) {
-//     res.status(400).send("qtd está undefined!");
-//   }
-
-
-//   escolhasModel.cadastrar(fkViagem, fkItem, qtd)
-//     .then((resultado) => {
-//       res.status(201).json(resultado);
-//     }
-//     ).catch((erro) => {
-//       console.log(erro);
-//       console.log(
-//         "\nHouve um erro ao realizar o cadastro! Erro: ",
-//         erro.sqlMessage
-//       );
-//       res.status(500).json(erro.sqlMessage);
-//     });
-// }
-
-
-// function atualizarEscolhas(req, res) {
-//   var fkViagem = req.body.fkViagemServer;
-//   var fkItem = req.body.fkItemServer;
-//   var qtd = req.body.qtdServer;
-
-
-//   if (fkViagem == undefined) {
-//     res.status(400).send("idViagem está undefined!");
-//   }
-
-//   if (fkItem == undefined) {
-//     res.status(400).send("idItem está undefined!");
-//   }
-//   if (qtd == undefined) {
-//     res.status(400).send("qtd está undefined!");
-//   }
-
-
-//   escolhasModel.atualizarEscolhas(fkViagem, fkItem, qtd)
-//     .then((resultado) => {
-//       res.status(201).json(resultado);
-//     }
-//     ).catch((erro) => {
-//       console.log(erro);
-//       console.log(
-//         "\nHouve um erro ao realizar o cadastro! Erro: ",
-//         erro.sqlMessage
-//       );
-//       res.status(500).json(erro.sqlMessage);
-//     });
-// }
-
-
 module.exports = {
   buscarVotosLugares,
   buscarEscolhasPorViagem,
-  salvar,
-  // cadastrar,
-  // atualizarEscolhas
+  salvar
 }

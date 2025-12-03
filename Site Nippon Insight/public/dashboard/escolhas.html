@@ -112,7 +112,6 @@
             <div class="buttons" id="navegacao_botoes">
                 <button id="button_anterior" class="botao" onclick="anterior()">ANTERIOR</button>
                 <button id="button_proximo" class="botao" onclick="proximo()">PRÓXIMO</button>
-                <button id="button_salvar" class="botao" onclick="salvar()">SALVAR</button>
             </div>
         </div>
     </div>
@@ -147,7 +146,6 @@
                 }
             })
             .catch(error => console.error('Erro ao buscar dados dos itens:', error));
-
 
     }
 
@@ -219,6 +217,7 @@
                                    <span id="span_preco">${Number(item.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
                                <h3>Quantidade:</h3>
                                <input type="number" id="input_qtd${item.idItem}" placeholder="Ex: 1">
+                               <button id="button_salvar" class="botao" onclick="salvar()">SALVAR</button>
                             </div>
                         </div> 
                     `;
@@ -251,16 +250,13 @@
         if (indexAtual == 0) {
             button_anterior.style.display = 'none'
             button_proximo.style.display = 'block'
-            button_salvar.style.display = 'none'
 
         } else if (indexAtual == listaCategorias.length - 1) {
             button_anterior.style.display = 'block'
             button_proximo.style.display = 'none'
-            button_salvar.style.display = 'block'
         } else {
             button_anterior.style.display = 'block'
             button_proximo.style.display = 'block'
-            button_salvar.style.display = 'none'
         }
 
     }
@@ -286,16 +282,11 @@
 
     function salvar() {
         
-
         for (var i = 0; i < lista_tudo.length; i++) {
-
-            // var idViagem = JSON.parse(sessionStorage.ID_VIAGEM).idViagem;
 
             var item = lista_tudo[i];
             var idInput = "input_qtd" + item.idItem;
-
             var input = document.getElementById(idInput);
-
             var qtd = Number(input.value);
 
             if (qtd > 0) {

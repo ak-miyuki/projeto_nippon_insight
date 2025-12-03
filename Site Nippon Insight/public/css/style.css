@@ -395,7 +395,7 @@ img {
 }
 
 .campo {
-  margin-top: 2vh;
+  margin-top: 1.5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -454,19 +454,25 @@ img {
 .alerta_erro {
   display: flex;
   justify-content: flex-end;
+  
 }
 
 .card_erro {
   display: none;
-  background-color: #fff;
-  color: black;
+  background-color: #101010;
+  color: #ddd0b5;
   width: 230px;
   position: fixed;
+  top: 20vh;
+  right: 9vw;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #dfd4be 3px solid;
   padding: 10px;
-  margin-right: 10%;
   z-index: 995;
+}
+
+.card_erro span {
+  color: #bd6088;
 }
 
 .card_erro #mensagem_erro {

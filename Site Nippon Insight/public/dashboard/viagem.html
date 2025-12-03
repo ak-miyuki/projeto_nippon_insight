@@ -147,17 +147,27 @@
 
     // Verificando se há algum campo em branco
     if (
-      estacaoVar == "" ||
       dtIdaVar == "" ||
       dtVoltaVar == "" ||
-      valorGuardadoVar == ""
+      qtdPessoasVar <= 0 ||
+      valorGuardadoVar < 0
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
+        `<span style='color: #ddd0b5;''><b>Erro:</b></span> <br> Preencha todos os campos! <br><br>
+        - Deve ter no mínimo 1 pessoa
+        <br><br>
+        - O valor guardado deve ser maior ou igual a ZERO!`;
       finalizarAguardar();
       return false;
+
+    } else if (dtVoltaVar <= dtIdaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "<span style='color: #ddd0b5;''><b>Erro:</b></span> <br> A data deve ser depois da data de ida!";
+      finalizarAguardar();
+      return false;
+
     } else {
 
       console.log(`idViagem:  `, idViagem);
@@ -197,16 +207,14 @@
 
                 })
 
-
-
               cardErro.style.display = "block";
 
               mensagem_erro.innerHTML =
-                "Cadastro realizado com sucesso! Redirecionando para a página do questionário...";
+                "<span style='color: #ddd0b5;''><b>Cadastro realizado com sucesso!</b></span> <br> Redirecionando para a página das escollhas...";
 
-              // setTimeout(() => {
-              //   window.location = "dashboard.html";
-              // }, "2000");
+              setTimeout(() => {
+                window.location = "escolhas.html";
+              }, "2000");
 
               finalizarAguardar();
             } else {
@@ -244,7 +252,7 @@
               cardErro.style.display = "block";
 
               mensagem_erro.innerHTML =
-                "Cadastro realizado com sucesso! Redirecionando para a página do questionário...";
+                "<span style='color: #ddd0b5;''><b>Cadastro realizado com sucesso!</b></span> <br> Redirecionando para a página do dashboard...";
 
               setTimeout(() => {
                 window.location = "dashboard.html";

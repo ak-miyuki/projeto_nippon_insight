@@ -117,7 +117,7 @@ INSERT INTO item (nomeItem, descricao, preco, tipo, categoria, foto) VALUES
 	('Crepe', 'Crepe doce com recheio de chantilly, frutas e caldas', 21, 'Doces', 'Alimentação', '<img src="../assets/imgs/crepe_4.jpg" alt="">'), -- Doces
 	('Confeitarias especiais', 'Doces tradicionais japoneses', 40, 'Doces', 'Alimentação', '<img src="../assets/imgs/wahashi.jpg" alt="">'), -- Doces
     
-	('Café da manhã simples', 'Sanduíche e café', 25, 'Café da manhã', 'Alimentação', '<img src="../assets/imgs/breakfast_ocidental.jpg" alt="">'), -- Café da manhã
+	('Café da manhã simples', 'Sanduíche e café', 25, 'Café da manhã', 'Alimentação', '<img src="../assets/imgs/sandwich_coffee.jpg" alt="">'), -- Café da manhã
 	('Café da manhã ocidental',  'Ovos, torradas e bebida', 40, 'Café da manhã', 'Alimentação', '<img src="../assets/imgs/breakfast_ocidental_2.jpg" alt="">'), -- Café da manhã
 	('Café da manhã em hotel',  'Buffet à vontade', 100, 'Café da manhã', 'Alimentação', '<img src="../assets/imgs/breakfast_oriental_2.jpg" alt="">'), -- Café da manhã
     
@@ -309,7 +309,9 @@ CREATE OR REPLACE VIEW vw_votosLugares AS
 			FROM item i
             JOIN escolha e ON e.fkItem = i.idItem
 				WHERE categoria = 'Lugar'
-					GROUP BY nomeItem;
+					GROUP BY nomeItem
+						ORDER BY COUNT(fkViagem) DESC
+							LIMIT 7;
                     
 SELECT * FROM vw_votosLugares;
 
